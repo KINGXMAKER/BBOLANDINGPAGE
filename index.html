@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BBO | CERTIFIED OUTSIDE</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=Oswald:wght@500;700&display=swap"
+        rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -22,11 +24,21 @@
                     animation: {
                         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'marquee': 'marquee 30s linear infinite',
+                        'flash': 'flash 2.5s ease-in-out infinite',
+                        'bounce-arrow': 'bounceArrow 1.5s ease-in-out infinite',
                     },
                     keyframes: {
                         marquee: {
                             '0%': { transform: 'translateX(0%)' },
                             '100%': { transform: 'translateX(-50%)' },
+                        },
+                        flash: {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '0.3' },
+                        },
+                        bounceArrow: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(12px)' },
                         }
                     }
                 }
@@ -34,105 +46,172 @@
         }
     </script>
     <style>
-        body { background-color: #000; color: #fff; }
-        .lux-gradient {
-            background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(255,0,127,0.05) 50%, rgba(0,0,0,1) 100%);
+        body {
+            background-color: #000;
+            color: #fff;
         }
+
+        .lux-gradient {
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(255, 0, 127, 0.05) 50%, rgba(0, 0, 0, 1) 100%);
+        }
+
         .grain {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 50;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 50;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
         }
+
         .glass-panel {
             background: rgba(20, 20, 20, 0.6);
             backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
-        .text-glow { text-shadow: 0 0 20px rgba(255, 0, 127, 0.3); }
-        .jotform-scroll::-webkit-scrollbar { width: 6px; }
-        .jotform-scroll::-webkit-scrollbar-track { background: #050505; }
-        .jotform-scroll::-webkit-scrollbar-thumb { background: #FF007F; border-radius: 10px; }
+
+        .text-glow {
+            text-shadow: 0 0 20px rgba(255, 0, 127, 0.3);
+        }
+
+        .jotform-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .jotform-scroll::-webkit-scrollbar-track {
+            background: #050505;
+        }
+
+        .jotform-scroll::-webkit-scrollbar-thumb {
+            background: #FF007F;
+            border-radius: 10px;
+        }
     </style>
 </head>
+
 <body class="antialiased overflow-x-hidden selection:bg-bbo-pink selection:text-white">
     <div class="grain"></div>
 
     <!-- Marquee -->
-    <div class="fixed top-0 left-0 w-full bg-bbo-pink text-white text-[10px] md:text-xs font-bold tracking-widest py-2 z-40 overflow-hidden uppercase">
+    <div
+        class="fixed top-0 left-0 w-full bg-bbo-pink text-white text-[10px] md:text-xs font-bold tracking-widest py-2 z-40 overflow-hidden uppercase">
         <div class="whitespace-nowrap animate-marquee inline-flex gap-8 items-center">
-            <span>⚠️ WARNING: HIGH STANDARDS REQUIRED</span> • <span>LIMITED SPOTS FOR Q1 CONTENT DAYS</span> • <span>SPOILED HOODIE RESTOCK LOADING...</span> •
-            <span>⚠️ WARNING: HIGH STANDARDS REQUIRED</span> • <span>LIMITED SPOTS FOR Q1 CONTENT DAYS</span> • <span>SPOILED HOODIE RESTOCK LOADING...</span> •
-            <span>⚠️ WARNING: HIGH STANDARDS REQUIRED</span> • <span>LIMITED SPOTS FOR Q1 CONTENT DAYS</span> • <span>SPOILED HOODIE RESTOCK LOADING...</span>
+            <span>⚠️ WARNING: HIGH STANDARDS REQUIRED</span> • <span>LIMITED SPOTS FOR Q1 CONTENT DAYS</span> •
+            <span>THE CONTENT GIRLY PLAYBOOK IS LIVE</span> •
+            <span>⚠️ WARNING: HIGH STANDARDS REQUIRED</span> • <span>LIMITED SPOTS FOR Q1 CONTENT DAYS</span> •
+            <span>THE CONTENT GIRLY PLAYBOOK IS LIVE</span> •
+            <span>⚠️ WARNING: HIGH STANDARDS REQUIRED</span> • <span>LIMITED SPOTS FOR Q1 CONTENT DAYS</span> •
+            <span>THE CONTENT GIRLY PLAYBOOK IS LIVE</span>
         </div>
     </div>
 
     <!-- HERO PHOTO HEADER -->
-    <section class="relative w-full min-h-[70vh] md:min-h-[85vh] flex items-end overflow-hidden pt-10">
+    <section
+        class="relative w-full min-h-[70vh] md:min-h-[85vh] flex items-center justify-center overflow-hidden pt-10">
         <div class="absolute inset-0 z-0">
             <img src="https://cdn.shopify.com/s/files/1/0609/1191/0972/files/IMG_4276.jpg?v=1771458923"
-                 alt="BBO Content Day" 
-                 class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black"></div>
+                alt="BBO Content Day" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black"></div>
         </div>
-        <div class="relative z-10 w-full pb-12 md:pb-16 px-4">
-            <div class="container mx-auto max-w-6xl text-center">
-                <p class="text-xs font-bold tracking-[0.3em] text-bbo-pink uppercase mb-4 animate-pulse">Bad Bitches Only™</p>
-                <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-none uppercase tracking-tighter text-white drop-shadow-2xl mb-6">
-                    THE BBO<br>WELCOME PACKAGE
-                </h1>
-                <p class="text-zinc-200 text-base md:text-xl max-w-xl mx-auto mb-8 font-light">
-                    Access the group chat. Secure the merch. Get the blueprint.
-                </p>
-                <a href="#claim" class="inline-block bg-white text-black font-display font-bold text-base md:text-lg px-10 py-4 rounded-full hover:bg-bbo-pink hover:text-white transition transform hover:scale-105 uppercase tracking-widest">
-                    Get Access
-                </a>
-            </div>
+        <div class="relative z-10 text-center">
+            <p
+                class="font-display text-5xl md:text-7xl lg:text-9xl font-bold uppercase tracking-tight text-white animate-flash text-glow">
+                BAD BITCHES ONLY™
+            </p>
         </div>
     </section>
 
-    <!-- WELCOME PACKAGE + FORM -->
+    <!-- WHAT'S INSIDE THE PLAYBOOK + FORM -->
     <section id="claim" class="relative py-16 md:py-20 bg-bbo-black">
         <div class="absolute inset-0 lux-gradient pointer-events-none"></div>
         <div class="container mx-auto max-w-3xl px-4 relative z-10 space-y-10">
 
-            <!-- Benefits -->
+            <!-- Playbook Preview -->
+            <div class="text-center mb-4">
+                <p class="text-xs font-bold tracking-[0.3em] text-bbo-pink uppercase mb-3">Free Download</p>
+                <h2 class="font-display text-3xl md:text-4xl font-bold uppercase tracking-tight mb-2">THE CONTENT GIRLY
+                    PLAYBOOK</h2>
+                <p class="text-zinc-400 text-sm md:text-base max-w-lg mx-auto">The BBO Blueprint to Soft Power &
+                    Scaling. Here's what's inside:</p>
+            </div>
+
+            <!-- Chapter Previews -->
             <div class="grid grid-cols-1 gap-3">
                 <div class="glass-panel p-4 rounded-xl flex items-center gap-4">
-                    <span class="text-2xl">📖</span>
+                    <span class="text-2xl">👑</span>
                     <div>
-                        <h4 class="font-bold text-xs uppercase text-white">Baddie Marketing E-Book</h4>
-                        <p class="text-[10px] text-zinc-500">How to grow your social media & influence.</p>
+                        <h4 class="font-bold text-xs uppercase text-white">Ch 1 — The Foundation: Who Are You?</h4>
+                        <p class="text-[10px] text-zinc-500">Define your brand DNA before you ever post.</p>
                     </div>
                 </div>
                 <div class="glass-panel p-4 rounded-xl flex items-center gap-4">
-                    <span class="text-2xl">🎟️</span>
+                    <span class="text-2xl">🎨</span>
                     <div>
-                        <h4 class="font-bold text-xs uppercase text-white">Spoiled Hoodie Discount</h4>
-                        <p class="text-[10px] text-zinc-500">Exclusive code for members only.</p>
+                        <h4 class="font-bold text-xs uppercase text-white">Ch 2 — The Identity System</h4>
+                        <p class="text-[10px] text-zinc-500">Colors, fonts, voice rules & bio templates that look like
+                            money.</p>
                     </div>
                 </div>
                 <div class="glass-panel p-4 rounded-xl flex items-center gap-4">
-                    <span class="text-2xl">📬</span>
+                    <span class="text-2xl">🔥</span>
                     <div>
-                        <h4 class="font-bold text-xs uppercase text-white">Exclusive Content & Updates</h4>
-                        <p class="text-[10px] text-zinc-500">First access to Content Days, drops, and insider updates.</p>
+                        <h4 class="font-bold text-xs uppercase text-white">Ch 3 — Content That Converts</h4>
+                        <p class="text-[10px] text-zinc-500">The Content Girly Hook, viral frameworks & the 5-3-2
+                            formula.</p>
+                    </div>
+                </div>
+                <div class="glass-panel p-4 rounded-xl flex items-center gap-4">
+                    <span class="text-2xl">📍</span>
+                    <div>
+                        <h4 class="font-bold text-xs uppercase text-white">Ch 5 — Content in the Wild: IRL = URL</h4>
+                        <p class="text-[10px] text-zinc-500">How being outside builds your brand faster than any
+                            algorithm.</p>
+                    </div>
+                </div>
+                <div class="glass-panel p-4 rounded-xl flex items-center gap-4">
+                    <span class="text-2xl">🤖</span>
+                    <div>
+                        <h4 class="font-bold text-xs uppercase text-white">Ch 6 — Ghostwriter in a Box</h4>
+                        <p class="text-[10px] text-zinc-500">AI prompts that generate captions & song choices from your
+                            photos.</p>
+                    </div>
+                </div>
+                <div class="glass-panel p-4 rounded-xl flex items-center gap-4">
+                    <span class="text-2xl">💰</span>
+                    <div>
+                        <h4 class="font-bold text-xs uppercase text-white">Ch 7 — Monetize the Movement</h4>
+                        <p class="text-[10px] text-zinc-500">7 revenue streams + your first $1,000 month plan.</p>
                     </div>
                 </div>
             </div>
 
             <!-- Form -->
             <div class="glass-panel p-6 md:p-8 rounded-2xl border-t-2 border-bbo-pink">
-                <h3 class="font-display text-2xl md:text-3xl font-bold uppercase text-center mb-6">CLAIM YOUR ACCESS</h3>
-                <form action="https://hook.us2.make.com/ilsbt27enpsckx58hsktyx5w8i17zxaw" method="POST" class="space-y-3">
+                <h3 class="font-display text-2xl md:text-3xl font-bold uppercase text-center mb-6">CLAIM YOUR ACCESS
+                </h3>
+                <form action="https://hook.us2.make.com/ilsbt27enpsckx58hsktyx5w8i17zxaw" method="POST"
+                    class="space-y-3">
                     <div style="display:none; visibility:hidden;" aria-hidden="true">
                         <input type="text" name="bbo_security_check" tabindex="-1" autocomplete="off">
                     </div>
                     <div class="grid grid-cols-2 gap-3">
-                        <input type="text" name="firstName" placeholder="NAME" class="w-full bg-black/60 border border-white/10 p-3 rounded-lg text-white text-xs font-bold focus:border-bbo-pink focus:outline-none transition uppercase" required>
-                        <input type="text" name="location" placeholder="CITY" class="w-full bg-black/60 border border-white/10 p-3 rounded-lg text-white text-xs font-bold focus:border-bbo-pink focus:outline-none transition uppercase" required>
+                        <input type="text" name="firstName" placeholder="NAME"
+                            class="w-full bg-black/60 border border-white/10 p-3 rounded-lg text-white text-xs font-bold focus:border-bbo-pink focus:outline-none transition uppercase"
+                            required>
+                        <input type="text" name="location" placeholder="CITY"
+                            class="w-full bg-black/60 border border-white/10 p-3 rounded-lg text-white text-xs font-bold focus:border-bbo-pink focus:outline-none transition uppercase"
+                            required>
                     </div>
-                    <input type="email" name="email" placeholder="EMAIL ADDRESS" class="w-full bg-black/60 border border-white/10 p-3 rounded-lg text-white text-xs font-bold focus:border-bbo-pink focus:outline-none transition uppercase" required>
-                    <input type="text" name="instagram" placeholder="IG @HANDLE" class="w-full bg-black/60 border border-white/10 p-3 rounded-lg text-white text-xs font-bold focus:border-bbo-pink focus:outline-none transition uppercase" required>
-                    <button type="submit" class="w-full bg-white text-black font-display font-bold text-xl py-4 rounded-lg hover:bg-bbo-pink hover:text-white transition-all transform hover:scale-[1.02] active:scale-95 shadow-xl">
+                    <input type="email" name="email" placeholder="EMAIL ADDRESS"
+                        class="w-full bg-black/60 border border-white/10 p-3 rounded-lg text-white text-xs font-bold focus:border-bbo-pink focus:outline-none transition uppercase"
+                        required>
+                    <input type="text" name="instagram" placeholder="IG @HANDLE"
+                        class="w-full bg-black/60 border border-white/10 p-3 rounded-lg text-white text-xs font-bold focus:border-bbo-pink focus:outline-none transition uppercase"
+                        required>
+                    <button type="submit"
+                        class="w-full bg-white text-black font-display font-bold text-xl py-4 rounded-lg hover:bg-bbo-pink hover:text-white transition-all transform hover:scale-[1.02] active:scale-95 shadow-xl">
                         GET MY WELCOME PACKAGE
                     </button>
                     <p class="text-[10px] text-center text-zinc-600 uppercase tracking-widest pt-1">
@@ -148,19 +227,30 @@
         <div class="container mx-auto max-w-4xl px-4 space-y-10">
 
             <div class="text-center">
-                <h3 class="font-display text-3xl md:text-4xl font-bold uppercase tracking-tight mb-4">OUR LAST CONTENT DAY</h3>
-                <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-zinc-900 aspect-video">
-                    <video controls playsinline preload="metadata" class="w-full h-full object-cover">
-                        <source src="https://cdn.shopify.com/videos/c/o/v/420d328b49d641ccb53cbf0c583e2a42.mov" type="video/quicktime">
-                        <source src="https://cdn.shopify.com/videos/c/o/v/420d328b49d641ccb53cbf0c583e2a42.mp4" type="video/mp4">
+                <h3 class="font-display text-3xl md:text-4xl font-bold uppercase tracking-tight mb-3">VIDEO FROM OUR
+                    LAST CONTENT DAY</h3>
+                <div class="flex justify-center mb-6">
+                    <svg class="w-8 h-8 text-bbo-pink animate-bounce-arrow" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                            d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                    </svg>
+                </div>
+                <div class="max-w-sm mx-auto rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-zinc-900">
+                    <video controls playsinline preload="metadata" class="w-full h-auto block"
+                        poster="https://cdn.shopify.com/s/files/1/0609/1191/0972/files/IMG_6506.jpg?v=1771625644">
+                        <source src="https://cdn.shopify.com/videos/c/o/v/420d328b49d641ccb53cbf0c583e2a42.mov"
+                            type="video/quicktime">
+                        <source src="https://cdn.shopify.com/videos/c/o/v/420d328b49d641ccb53cbf0c583e2a42.mp4"
+                            type="video/mp4">
                     </video>
                 </div>
             </div>
 
             <div class="text-center space-y-4">
-                <h3 class="font-display text-2xl md:text-3xl font-bold uppercase tracking-tight text-bbo-pink">SIGN UP FOR THE NEXT ONE BELOW</h3>
-                <img src="https://cdn.shopify.com/s/files/1/0609/1191/0972/files/uboatwave_form_files_image.697aaaa443e9b7.10807866.png?v=1771458929" alt="Content Day Flyer" class="w-full max-w-2xl mx-auto rounded-xl shadow-lg border border-white/5">
-                
+                <h3 class="font-display text-2xl md:text-3xl font-bold uppercase tracking-tight text-bbo-pink">SIGN UP
+                    FOR THE NEXT ONE BELOW</h3>
+
                 <div class="glass-panel rounded-2xl overflow-hidden max-w-3xl mx-auto">
                     <div class="jotform-scroll max-h-[500px] overflow-y-auto p-2">
                         <script type="text/javascript" src="https://form.jotform.com/jsform/253173729237058"></script>
@@ -175,13 +265,16 @@
         <div class="container mx-auto px-4 max-w-5xl">
             <div class="bg-white rounded-[2rem] overflow-hidden flex flex-col md:flex-row shadow-2xl">
                 <div class="md:w-1/2 aspect-square">
-                    <img src="https://cdn.shopify.com/s/files/1/0609/1191/0972/files/1770919611305.png?v=1771117524" alt="SPOILED Hoodie" class="w-full h-full object-cover">
+                    <img src="https://cdn.shopify.com/s/files/1/0609/1191/0972/files/1770919611305.png?v=1771117524"
+                        alt="SPOILED Hoodie" class="w-full h-full object-cover">
                 </div>
                 <div class="md:w-1/2 p-10 flex flex-col justify-center bg-white text-black">
                     <p class="text-xs font-black tracking-widest text-zinc-400 uppercase mb-2">The Uniform</p>
                     <h2 class="font-display text-5xl font-bold uppercase leading-none mb-6">THE SPOILED<br>HOODIE™</h2>
                     <p class="text-zinc-600 mb-8 font-medium italic">Heavyweight fabric. Oversized fit. No settling.</p>
-                    <a href="https://bbouniverse.com" target="_blank" class="bg-black text-white text-center py-4 rounded-full font-bold uppercase tracking-widest hover:scale-105 transition block">SECURE YOURS</a>
+                    <a href="https://bbouniverse.com" target="_blank"
+                        class="bg-black text-white text-center py-4 rounded-full font-bold uppercase tracking-widest hover:scale-105 transition block">SECURE
+                        YOURS</a>
                 </div>
             </div>
         </div>
@@ -190,18 +283,24 @@
     <!-- YouTube -->
     <section class="py-20 bg-black">
         <div class="container mx-auto px-4 max-w-4xl text-center">
-            <h3 class="font-display text-3xl md:text-4xl font-bold uppercase mb-8 tracking-tighter">TAP INTO OUR YOUTUBE</h3>
-            <div class="relative pt-[56.25%] rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
-                <iframe 
-                    class="absolute inset-0 w-full h-full"
-                    src="https://www.youtube.com/embed/YdDEeMpllNM?si=Wp3XwB2F-9nK0C_t" 
-                    title="YouTube video player" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                    loading="lazy"
-                    allowfullscreen>
+            <h3 class="font-display text-3xl md:text-4xl font-bold uppercase mb-8 tracking-tighter">TAP INTO OUR YOUTUBE
+            </h3>
+            <div class="relative pt-[56.25%] rounded-2xl overflow-hidden border border-white/10 shadow-2xl mb-8">
+                <iframe class="absolute inset-0 w-full h-full"
+                    src="https://www.youtube.com/embed/YdDEeMpllNM?si=Wp3XwB2F-9nK0C_t" title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    loading="lazy" allowfullscreen>
                 </iframe>
             </div>
+            <a href="https://www.youtube.com/@BadBtchesOnlyTV/shorts" target="_blank"
+                class="inline-flex items-center gap-3 bg-white/5 border border-white/10 text-white font-display font-bold text-base md:text-lg px-10 py-4 rounded-full hover:bg-bbo-pink hover:border-bbo-pink transition transform hover:scale-105 uppercase tracking-widest">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65.28-1.3.07-2.49.1-3.59.1L12 19c-4.19 0-6.8-.16-7.83-.44-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-1.1-.28-1.9-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73.47-.13 1.33-.22 2.65-.28 1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.16 7.83.44.9.25 1.48.83 1.73 1.73z" />
+                </svg>
+                WATCH OUR SHORTS
+            </a>
         </div>
     </section>
 
@@ -211,19 +310,24 @@
             <div class="flex flex-col md:flex-row justify-center items-center gap-10 md:gap-20 mb-16">
                 <a href="https://www.patreon.com/c/TheBBOShow" target="_blank" class="group">
                     <p class="text-zinc-500 text-[10px] font-bold tracking-widest uppercase mb-2">Support</p>
-                    <span class="font-display text-3xl md:text-4xl font-bold group-hover:text-bbo-pink transition">PATREON</span>
+                    <span
+                        class="font-display text-3xl md:text-4xl font-bold group-hover:text-bbo-pink transition">PATREON</span>
                 </a>
                 <a href="https://www.instagram.com/dabboshow" target="_blank" class="group">
                     <p class="text-zinc-500 text-[10px] font-bold tracking-widest uppercase mb-2">Follow</p>
-                    <span class="font-display text-3xl md:text-4xl font-bold group-hover:text-bbo-pink transition">INSTAGRAM</span>
+                    <span
+                        class="font-display text-3xl md:text-4xl font-bold group-hover:text-bbo-pink transition">INSTAGRAM</span>
                 </a>
                 <a href="https://www.tiktok.com/@dabboshow" target="_blank" class="group">
                     <p class="text-zinc-500 text-[10px] font-bold tracking-widest uppercase mb-2">Watch</p>
-                    <span class="font-display text-3xl md:text-4xl font-bold group-hover:text-bbo-pink transition">TIKTOK</span>
+                    <span
+                        class="font-display text-3xl md:text-4xl font-bold group-hover:text-bbo-pink transition">TIKTOK</span>
                 </a>
             </div>
-            <p class="text-[10px] text-zinc-800 font-bold tracking-[0.4em] uppercase">© 2026 BAD BITCHES ONLY • NEWARK • NYC • WORLDWIDE</p>
+            <p class="text-[10px] text-zinc-800 font-bold tracking-[0.4em] uppercase">© 2026 BAD BITCHES ONLY • NEWARK •
+                NYC • WORLDWIDE</p>
         </div>
     </footer>
 </body>
+
 </html>
