@@ -164,7 +164,6 @@
                 <p class="text-xs font-bold tracking-[0.3em] text-bbo-pink uppercase mb-3">Free Download</p>
                 <h2 class="font-display text-3xl md:text-4xl font-bold uppercase tracking-tight mb-4">THE CONTENT GIRLY
                     PLAYBOOK</h2>
-                <!-- UPDATED SUBTITLE -->
                 <p class="text-white text-base md:text-lg font-semibold max-w-lg mx-auto leading-snug">
                     You're out here posting and STILL not getting paid.<br>This playbook fixes that. Free. Right now.
                 </p>
@@ -203,10 +202,9 @@
 
             <!-- Form -->
             <div class="glass-panel p-6 md:p-8 rounded-2xl border-t-2 border-bbo-pink">
-                <!-- UPDATED FORM HEADER -->
                 <h3 class="font-display text-2xl md:text-3xl font-bold uppercase text-center mb-2">Get The Playbook Free</h3>
                 <p class="text-zinc-500 text-xs text-center uppercase tracking-widest mb-6">Drop your info. We'll send it right now.</p>
-                <form action="https://hook.us2.make.com/ilsbt27enpsckx58hsktyx5w8i17zxaw" method="POST"
+                <form id="ebook-form" action="https://hook.us2.make.com/ilsbt27enpsckx58hsktyx5w8i17zxaw" method="POST"
                     class="space-y-3">
                     <div style="display:none; visibility:hidden;" aria-hidden="true">
                         <input type="text" name="bbo_security_check" tabindex="-1" autocomplete="off">
@@ -225,16 +223,76 @@
                     <input type="text" name="instagram" placeholder="IG @HANDLE"
                         class="w-full bg-black/60 border border-white/10 p-3 rounded-lg text-white text-xs font-bold focus:border-bbo-pink focus:outline-none transition uppercase"
                         required>
-                    <!-- UPDATED BUTTON -->
-                    <button type="submit"
+                    <button type="submit" id="ebook-submit-btn"
                         class="w-full bg-white text-black font-display font-bold text-xl py-4 rounded-lg hover:bg-bbo-pink hover:text-white transition-all transform hover:scale-[1.02] active:scale-95 shadow-xl">
                         Download Now (Free)
                     </button>
-                    <!-- UPDATED FOOTER TEXT -->
                     <p class="text-[10px] text-center text-zinc-600 uppercase tracking-widest pt-1">
                         Instant download. No spam. Unsubscribe anytime.
                     </p>
                 </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONFIRMATION PAGE (hidden until form submit) -->
+    <section id="confirm-section" class="hidden relative min-h-screen bg-bbo-black flex items-center justify-center py-24 px-4">
+        <div class="absolute inset-0 lux-gradient pointer-events-none"></div>
+        <div class="container mx-auto max-w-lg relative z-10 text-center space-y-8">
+
+            <!-- Checkmark -->
+            <div class="flex justify-center">
+                <div class="w-20 h-20 rounded-full border-2 border-bbo-pink flex items-center justify-center">
+                    <svg class="w-10 h-10 text-bbo-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Headline -->
+            <div>
+                <p class="text-bbo-pink text-xs font-black tracking-[0.3em] uppercase mb-3">Certified.</p>
+                <h2 class="font-display text-5xl md:text-7xl font-bold uppercase tracking-tight text-white text-glow mb-4">
+                    YOU'RE IN.
+                </h2>
+                <p class="text-white text-base md:text-lg font-semibold max-w-sm mx-auto leading-snug">
+                    The playbook is on its way.<br>
+                    <span class="text-zinc-400 text-sm">Check your email — including spam.</span>
+                </p>
+            </div>
+
+            <!-- Divider -->
+            <div class="border-t border-white/10 w-full"></div>
+
+            <!-- What's Next -->
+            <div class="glass-panel rounded-2xl p-6 text-left space-y-4">
+                <p class="text-bbo-pink text-[10px] font-black tracking-[0.25em] uppercase">While you wait</p>
+                <ul class="space-y-3">
+                    <li class="flex items-start gap-3">
+                        <span class="text-bbo-pink font-black text-lg leading-none mt-0.5">→</span>
+                        <span class="text-white text-sm">Follow <strong>@dabboshow</strong> so you don't miss the next content day</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-bbo-pink font-black text-lg leading-none mt-0.5">→</span>
+                        <span class="text-white text-sm">Cop the <strong>SPOILED Hoodie</strong> before it sells out</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-bbo-pink font-black text-lg leading-none mt-0.5">→</span>
+                        <span class="text-white text-sm">Watch the <strong>latest BBO content</strong> on YouTube</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- CTAs -->
+            <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                <a href="https://www.instagram.com/dabboshow" target="_blank"
+                    class="bg-bbo-pink text-white font-display font-bold text-sm py-4 px-8 rounded-lg hover:scale-105 transition uppercase tracking-widest">
+                    Follow @dabboshow
+                </a>
+                <a href="https://bbouniverse.com" target="_blank"
+                    class="bg-white/10 border border-white/20 text-white font-display font-bold text-sm py-4 px-8 rounded-lg hover:bg-white/20 transition uppercase tracking-widest">
+                    Shop The Store
+                </a>
             </div>
         </div>
     </section>
@@ -345,6 +403,45 @@
                 NYC • WORLDWIDE</p>
         </div>
     </footer>
+
+    <!-- Form Handler -->
+    <script>
+        document.getElementById('ebook-form').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            // Honeypot — if filled, it's a bot
+            if (document.querySelector('[name="bbo_security_check"]').value !== '') return;
+
+            const btn = document.getElementById('ebook-submit-btn');
+            const originalText = btn.textContent;
+            btn.textContent = 'Sending...';
+            btn.disabled = true;
+
+            try {
+                const response = await fetch(this.action, {
+                    method: 'POST',
+                    body: new FormData(this)
+                });
+
+                if (response.ok) {
+                    // Fire conversion events
+                    if (typeof fbq !== 'undefined') fbq('track', 'Lead');
+                    if (typeof posthog !== 'undefined') posthog.capture('ebook_form_submitted');
+
+                    // Hide form section, show confirmation
+                    document.getElementById('claim').classList.add('hidden');
+                    document.getElementById('confirm-section').classList.remove('hidden');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    throw new Error('Bad response');
+                }
+            } catch (err) {
+                btn.textContent = 'Try Again';
+                btn.disabled = false;
+            }
+        });
+    </script>
+
 </body>
 
 </html>
